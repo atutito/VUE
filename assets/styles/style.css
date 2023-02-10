@@ -1,0 +1,28 @@
+.fa {
+    padding: 7.5px;
+    font-size: 20px;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+.fa:hover {
+    opacity: 0.7;
+}
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+.fa-whatsapp {
+    background: #128c7e;
+    color: white;
+}
+.form .fa-search{
+    display: inline-flex;
+    color: #9ca3af;
+}
