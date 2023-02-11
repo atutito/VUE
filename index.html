@@ -11,39 +11,46 @@
 
     <title>Amazing Events</title>
 </head>
-<body>
-    <header>
-        <nav class="navbar d-flex navbar-expand-lg justify-content-between" style="background-color: rgb(221, 218, 218);">
+<body class="d-flex flex-column min-vh-100" style="margin-bottom: 8vh;">
+  <header>
+    <div class="logo">
+        <nav class="navbar d-flex navbar-expand-lg justify-content-between p-3" style="background-color: rgb(221, 218, 218);">
             <img class="navbar-brand w-25" src="./assets/img/Logo Amazing Events.png" alt="Logo">
             <div class="nav justify-content-end">    
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Active</a>
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
+                  <a class="nav-link" href="./upcoming_events.html">Upcoming Events</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
+                  <a class="nav-link" href="./past_events.html">Past Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="./contact.html">Contact</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="./stats.html">Stats</a>
                   </li>
             </div>
         </nav>
-        <title>
+      </div>
             <div id="carouselExample" class="carousel slide">
-                <div class="carousel-inner">
+                <div class="carousel-inner mt-3">
                   <div class="carousel-item active">
-                    <img src="..." class="d-block w-100" alt="...">
+                    <img src="./assets/img/1.jpg" class="d-block w-100" alt="Spa">
                   </div>
                   <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
+                    <img src="./assets/img/2.jpg" class="d-block w-100" alt="Amusement Park">
                   </div>
                   <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
+                    <img src="./assets/img/3.jpg" class="d-block w-100" alt="Sushi Night">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./assets/img/4.jpg" class="d-block w-100" alt="Hiking">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./assets/img/5.jpg" class="d-block w-100" alt="Diving">
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -55,28 +62,28 @@
                   <span class="visually-hidden">Next</span>
                 </button>
               </div>
-        </title>
     </header>
     <main>
-        <div class="form-check form-check-inline m-3">
+      <div class="d-flex justify-content-evenly m-5">
+        <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-            <label class="form-check-label" for="inlineCheckbox1">1</label>
+            <label class="form-check-label" for="inlineCheckbox1">With Kids</label>
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">2</label>
+            <label class="form-check-label" for="inlineCheckbox2">Night Out</label>
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">3</label>
+            <label class="form-check-label" for="inlineCheckbox2">Fun</label>
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">4</label>
+            <label class="form-check-label" for="inlineCheckbox2">Nature</label>
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">5</label>
+            <label class="form-check-label" for="inlineCheckbox2">Relax</label>
           </div>
           
         <div class="container form-check-inline">
@@ -84,15 +91,17 @@
             <div class="row justify-content-center">
 
 
-                <div class="form col-md-6">
-                  <input type="text" class="form-control form-input" placeholder="Search anything...">
-                  <i class="fa fa-search"></i></span>
+                <div class="form d-flex col-md-6">
+                  <input type="text" class="form-control form-input" placeholder="Search anything..."><i class="fa fa-search"></i></span>
                 </div>
                 
               
             </div>
             
           </div>
+        </div>
+
+
           <div class="tarjetas m-3">
           <div class="row row-cols-1 row-cols-md-4 g-4">
             <div class="col">
@@ -101,7 +110,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Card title</h5>
                   <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <button type="button" class="btn btn-outline-info">Info</button>
+                  <button type="button" class="btn btn-danger float-right">Info</button>
                 </div>
               </div>
             </div>
@@ -111,7 +120,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Card title</h5>
                   <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <button type="button" class="btn btn-outline-info">Info</button>
+                  <button type="button" class="btn btn-danger">Info</button>
                 </div>
               </div>
             </div>
@@ -120,8 +129,8 @@
                 <img src="./assets/img/Food_Fair.jpg" class="card-img-top" alt="Food Fair Event">
                 <div class="card-body">
                   <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                  <button type="button" class="btn btn-outline-info">Info</button>
+                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <button type="button" class="btn btn-danger">Info</button>
                 </div>
               </div>
             </div>
@@ -131,7 +140,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Card title</h5>
                   <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <button type="button" class="btn btn-outline-info">Info</button>
+                  <button type="button" class="btn btn-danger">Info</button>
                 </div>
               </div>
             </div>
@@ -139,7 +148,7 @@
         </div>
     </main>
    
-    <footer class="d-flex fixed-bottom justify-content-between p-3" style="background-color: rgb(221, 218, 218);">
+    <footer class="d-flex fixed-bottom justify-content-between mt-auto p-3" style="background-color: rgb(221, 218, 218);">
         <div>
             <a href="#" class="fa fa-facebook"></a>
             <a href="#" class="fa fa-twitter"></a>
