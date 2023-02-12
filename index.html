@@ -13,10 +13,9 @@
 </head>
 <body class="d-flex flex-column min-vh-100" style="margin-bottom: 8vh;">
   <header>
-    <div class="logo">
         <nav class="navbar d-flex navbar-expand-lg justify-content-between p-3" style="background-color: rgb(221, 218, 218);">
-            <img class="navbar-brand w-25" src="./assets/img/Logo Amazing Events.png" alt="Logo">
-            <div class="nav justify-content-end">    
+            <img class="navbar-brand d-flex w-25" src="./assets/img/Logo Amazing Events.png" alt="Logo">
+            <div class="nav d-flex justify-content-end">    
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
@@ -34,8 +33,7 @@
                   </li>
             </div>
         </nav>
-      </div>
-            <div id="carouselExample" class="carousel slide">
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner mt-3">
                   <div class="carousel-item active">
                     <img src="./assets/img/1.jpg" class="d-block w-100" alt="Spa">
@@ -53,18 +51,18 @@
                     <img src="./assets/img/5.jpg" class="d-block w-100" alt="Diving">
                   </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
                 </button>
               </div>
     </header>
     <main>
-      <div class="d-flex justify-content-evenly m-5">
+      <div class="d-flex justify-content-evenly m-5" id="search">
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
             <label class="form-check-label" for="inlineCheckbox1">With Kids</label>

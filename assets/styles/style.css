@@ -39,11 +39,3 @@
     display: inline-flex;
     color: #9ca3af;
 }
-
-@media only screen and (max-width: 768) {
-    .logo {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-}
