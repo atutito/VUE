@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="./assets/img/favicon.ico" sizes="32x32">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/styles/style.css">
-
     <title>Amazing Events</title>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -38,12 +37,9 @@
             
     </header>
     <main>
-        <div class="d-flex justify-content-center gap-1">
-
-            <table class="table table-danger table-striped m-5">
-                <thead>
-                  <th colspan="3" style="border-bottom: 1px solid black;">Events Statistics</th>
-                </thead>
+        <div class="d-flex flex-column justify-content-center m-4">
+          <h4>Events Statistics</h4>
+            <table class="table table-danger table-striped">
                 <tbody>
                   <tr>
                     <td>Events with the higher percentage of attendance</td>
@@ -61,10 +57,10 @@
                     <td></td>
                   </tr>
                 </tbody>
-                <thead>
-                    <th colspan="3" style="border-bottom: 1px solid black;">Upcoming Events Statistics by Category</th>
-                </thead>
-                  <tbody>
+              </table>
+          <h4>Upcoming Events Statistics by Category</h4>
+              <table class="table table-danger table-striped">
+                <tbody>
                     <tr>
                       <td>Categories</td>
                       <td>Revenues</td>
@@ -80,13 +76,11 @@
                       <td></td>
                       <td></td>
                     </tr>
-                  </tbody>
-                  <thead>
-                    <tr>
-                      <th colspan="3" style="border-bottom: 1px solid black;">Past Events by Category</th>
-                    </tr>
-                  </thead>
-                  <tbody>
+                </tbody>
+              </table>
+                      <h4 class="d-flex">Past Events by Category</h4>
+              <table class="table table-danger table-striped">
+                <tbody>
                     <tr>
                         <td>Categories</td>
                         <td>Revenues</td>
@@ -94,15 +88,15 @@
                     </tr>
                     <tr>
                       <td>--</td>
-                      <td></td>
-                      <td></td>
+                      <td>--</td>
+                      <td>--</td>
                     </tr>
                     <tr>
                       <td>--</td>
-                      <td></td>
-                      <td></td>
+                      <td>--</td>
+                      <td>--</td>
                     </tr>
-                  </tbody>
+                </tbody>
               </table>
         </div>        
     </main>
