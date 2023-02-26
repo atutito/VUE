@@ -12,35 +12,45 @@
     <title>Amazing Events</title>
 </head>
 <body class="d-flex flex-column min-vh-100" style="margin-bottom: 8vh;">
-  <header>
-    <div class="logo">
-        <nav class="navbar d-flex navbar-expand-lg justify-content-between p-3" style="background-color: rgb(221, 218, 218);">
-            <img class="navbar-brand w-25" src="./assets/img/Logo Amazing Events.png" alt="Logo">
-            <div class="nav justify-content-end">    
-                <li class="nav-item">
-                  <a class="nav-link" href="./index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./upcoming_events.html">Upcoming Events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Past Events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./contact.html">Contact</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="./stats.html">Stats</a>
-                  </li>
-            </div>
-        </nav>
+  <header class="d-flex justify-content-between w-100 min"> 
+    <nav class="navbar d-flex navbar-expand-lg p-3 w-100" style="background-color: rgb(221, 218, 218);">
+      <div class="container-fluid">
+      <div>
+        <img class="navbar-brand w-25" src="./assets/img/Logo Amazing Events.png" alt="Logo">
       </div>
+
+      <button class="navbar-toggler navbar-toggler-icon color-text justify-self-end" type="button" data-bs-toggle="collapse" data-bs-target="#hamburguesa" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class=""></span>
+      </button>
+      
+      <div class= "collapse navbar-collapse justify-content-end pr-2" id = "hamburguesa">    
+        <ul class="navbar-nav nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./upcoming_events.html">Upcoming Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Past Events</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="./contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="./stats.html">Stats</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    </nav>        
 </header>
 
 <main>
         <div class="tarjetas m-3">
-        <div class="row row-cols-1 row-cols-md-4 g-4 m-4" id="cuerpo">
-          <!-- <div class="col">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 m-4" id="cuerpo">
+            <!-- <div class="col">
             <div class="card">
               <img src="./assets/img/Cinema.jpg" class="card-img-top" alt="Cinema Event">
               <div class="card-body">

@@ -1,7 +1,5 @@
 const fechaActual = Date.parse(eventsData.currentDate);
 
-console.log(typeof(fechaActual));
-
 let fichas = [];
 
 let newFichas = new DocumentFragment();
@@ -13,10 +11,13 @@ for(let cartas of eventsData.events) {
     };
 };
 
+let fragmento = new DocumentFragment();
+
 for (let elemento of fichas){
-    cuerpo.innerHTML += `<div class="col">
+    let div = document.createElement('div');
+    div.innerHTML += `<div class="col">
                             <div class="card">
-                                <img src="${elemento.image}" class="card-img-top" alt="${elemento.name}" style= "width: 100%; height: 10vw; object-fit: cover;">
+                                <img src="${elemento.image}" class="card-img-top" alt="${elemento.name}" style= "width: 100%; height: 20vw; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title">${elemento.name}</h5>
                             <p class="card-text">${elemento.description}</p>
@@ -25,4 +26,7 @@ for (let elemento of fichas){
                             </div>
                             </div>
                         </div>`
+    fragmento.appendChild(div);
 };
+
+cuerpo.appendChild(fragmento);

@@ -2,15 +2,13 @@
 
 .nav-link{
     font-family: 'Bebas Neue', cursive;
-    font-size: 20pt;
+    font-size: 1.5rem;
     color: #d90368;
 }
 
-.nav-link :hover{
-    color: #f8d7da !important;
+h4, h5, .form-label, .btn {
+    font-family: 'Bebas Neue', cursive;
 }
-
-
 .fa {
     padding: 7.5px;
     font-size: 20px;
@@ -38,4 +36,4 @@
 .form .fa-search{
     display: inline-flex;
     color: #9ca3af;
-}
+};
