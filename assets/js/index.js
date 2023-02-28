@@ -27,3 +27,35 @@ for (let elemento of fichas){
 };
 
 cuerpo.appendChild(fragmento);
+
+
+
+let busqueda = document.getElementById('search');
+
+let categorias =[];
+
+for (categoria of eventsData.events){
+    categorias.push(categoria.category);
+}
+
+console.table(categorias);
+
+const dupCats = categorias.filter((cat, indice) => {
+    return categorias.indexOf(cat) !== indice;
+});
+
+console.log(dupCats);
+
+let fragmento2 = new DocumentFragment();
+
+for (let elemento of dupCats){
+    let div = document.createElement('div');
+    div.innerHTML += `<div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                        <label class="form-check-label" for="inlineCheckbox1">${elemento} </label>
+                    </div>`
+                    
+    fragmento2.appendChild(div);
+};
+
+busqueda.appendChild(fragmento2);
