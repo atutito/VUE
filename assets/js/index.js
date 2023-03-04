@@ -19,7 +19,7 @@ for (let elemento of fichas){
                                 <h5 class="card-title">${elemento.name}</h5>
                             <p class="card-text">${elemento.description}</p>
                             <p class="card-text">Price: $${elemento.price}</p>
-                                <a href="./card.html"><button type="button" class="btn btn-danger" style="float: right;">Info</button></a>
+                                <a href="./card.html?_id=${elemento._id}"><button type="button" class="btn btn-danger" style="float: right;">Details</button></a>
                             </div>
                             </div>
                         </div>`
@@ -27,7 +27,6 @@ for (let elemento of fichas){
 };
 
 cuerpo.appendChild(fragmento);
-
 
 
 let busqueda = document.getElementById('search');
@@ -38,24 +37,44 @@ for (categoria of eventsData.events){
     categorias.push(categoria.category);
 }
 
-console.table(categorias);
-
 const dupCats = categorias.filter((cat, indice) => {
     return categorias.indexOf(cat) !== indice;
 });
-
-console.log(dupCats);
 
 let fragmento2 = new DocumentFragment();
 
 for (let elemento of dupCats){
     let div = document.createElement('div');
     div.innerHTML += `<div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                        <label class="form-check-label" for="inlineCheckbox1">${elemento} </label>
+                        <input class="form-check-input" type="checkbox" value="option">
+                        <label class="form-check-label" for="checkbox">${elemento} </label>
                     </div>`
                     
     fragmento2.appendChild(div);
 };
 
 busqueda.appendChild(fragmento2);
+
+let hijos = busqueda.children;
+let arrayHijos = []
+
+let checks = document.getElementsByClassName('form-check-input')
+
+arrayHijos.push(checks);
+
+const arrayHijos2 = Array.prototype.slice.call(arrayHijos[0]);
+const etiquetas = Array.prototype.slice.call(document.getElementsByClassName('form-check-label'));
+
+let checkboxes = document.querySelectorAll('input[type=checkbox]')
+
+checkboxes.forEach( checkbox  => { 
+     checkbox.addEventListener('change', verificarSeleccion) 
+     })
+function verificarSeleccion(){
+     let inputsChequeados = Array.from(checkboxes).filter(checkbox => checkbox.checked)
+     console.log(inputsChequeados);
+}
+
+console.log(etiquetas);
+console.log(arrayHijos2);
+console.log(fichas);
