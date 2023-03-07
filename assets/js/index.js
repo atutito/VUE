@@ -1,3 +1,5 @@
+
+// SE LLAMAN LAS CARDS DINÁMICAMENTE
 const fechaActual = Date.parse(eventsData.currentDate);
 
 let fichas = [];
@@ -7,6 +9,8 @@ let cuerpo = document.getElementById('cuerpo');
 for(let cartas of eventsData.events) {
     fichas.push(cartas);
 };
+
+console.log(fichas);
 
 let fragmento = new DocumentFragment();
 
@@ -29,6 +33,9 @@ for (let elemento of fichas){
 cuerpo.appendChild(fragmento);
 
 
+
+
+// SE CREAN LAS ETIQUETAS DE LOS INPUTS DINÁMICAS
 let busqueda = document.getElementById('search');
 
 let categorias =[];
@@ -55,26 +62,53 @@ for (let elemento of dupCats){
 
 busqueda.appendChild(fragmento2);
 
-let hijos = busqueda.children;
-let arrayHijos = []
 
-let checks = document.getElementsByClassName('form-check-input')
+// SE ESCUCHAN LAS CHECKBOXES, SE GENERA ARRAY DE LABELS
+let hijos = busqueda.children;
+let arrayHijos = [];
+
+let checks = document.getElementsByClassName('form-check-input');
 
 arrayHijos.push(checks);
 
-const arrayHijos2 = Array.prototype.slice.call(arrayHijos[0]);
-const etiquetas = Array.prototype.slice.call(document.getElementsByClassName('form-check-label'));
-
 let checkboxes = document.querySelectorAll('input[type=checkbox]')
+let arrayFiltrado = [];
+let chequeados = [];
+let categoriasChequeadas = [];
+let fichasChequeadas = [];
 
 checkboxes.forEach( checkbox  => { 
      checkbox.addEventListener('change', verificarSeleccion) 
      })
 function verificarSeleccion(){
-     let inputsChequeados = Array.from(checkboxes).filter(checkbox => checkbox.checked)
-     console.log(inputsChequeados);
-}
+     chequeados = Array.from(checkboxes).filter(checkbox => checkbox.checked);
+     for (let i of chequeados){
+     arrayFiltrado.push(i.nextElementSibling.innerHTML);
+    }
+    categoriasChequeadas = [...new Set(arrayFiltrado)];
+    console.log(categoriasChequeadas);
+    for (let j of categoriasChequeadas){
+        for (let i=0; i<fichas.length; i++){
+        if (j == i.category) {
+            fichasChequeadas.push(i); 
+            console.log(fichasChequeadas);
+        } 
+        }    
+    }
+};
 
-console.log(etiquetas);
-console.log(arrayHijos2);
-console.log(fichas);
+
+// FILTRO SEARCH
+let filtroBusqueda = document.getElementById('filtroBusqueda');
+let arrayFiltrado2 = [];
+
+const input = filtroBusqueda.addEventListener('keyup', (e) => {
+    let busqueda = e.target.value.toLowerCase();
+    console.log(busqueda);
+        for (let j; j < fichas.length; j++) {
+        if(j.name.includes(busqueda)) {
+            arrayFiltrado2.push(j);
+        };
+        console.log(arrayFiltrado2);
+        };
+});

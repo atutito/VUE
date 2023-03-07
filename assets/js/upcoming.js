@@ -1,3 +1,4 @@
+// SE MUESTRAN LAS CARDS PRÓXIMAS A LA FECHA ACTUAL
 const fechaActual = Date.parse(eventsData.currentDate);
 
 let fichas = [];

@@ -1,3 +1,4 @@
+// SE MUESTRAN LAS CARDS PASADAS LA FECHA ACTUAL
 const fechaActual = Date.parse(eventsData.currentDate);
 
 let fichas = [];
