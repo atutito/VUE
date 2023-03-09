@@ -20,7 +20,7 @@ function tarjetas(array, contenedor) {
         let fragmento = new DocumentFragment();
     for (let elemento of array){
         let div = document.createElement('div');
-        div.innerHTML += `<div>
+        div.innerHTML += `<div class="col">
                                 <div class="card">
                                     <img src="${elemento.image}" class="card-img-top" alt="${elemento.name}" style= "width: 100%; height: 20vw; object-fit: cover;">
                                 <div class="card-body">

@@ -10,12 +10,15 @@ function mostrarTarjeta(idContainer){
         tarjeta.innerHTML = `       <div id="tarjetadetail">
                                     <div class="row g-0">
                                     <div class="col-md-4" style="width:30vw; height: 20vh">
-                                        <img src="${evento.image}" class="img-fluid rounded" alt="${evento.name} >
+                                        <img src="${evento.image}" class="img-fluid rounded" 4alt="${evento.name} >
                                     </div>
                                     <div class="col-md-8 border border-dark">
                                         <div class="card-body">
                                         <h5 class="card-title">${evento.name}</h5>
-                                        <p class="card-text">${evento.description}</p>
+                                        <p class="card-text" style="text-align: center"><big>${evento.description}</big></p>
+                                        <p class="card-text"><small class="text-muted">Date: ${evento.date}</small></p>
+                                        <p class="card-text"><small class="text-muted">Category: ${evento.category}</small></p>
+                                        <p class="card-text"><small class="text-muted">Place: ${evento.place}</small></p>
                                         <p class="card-text"><small class="text-muted">${evento.assistance > 0 ? "Attendance: " + evento.assistance + " people." : ""}</small></p>
                                         <p class="card-text"><small class="text-muted">Price: $${evento.price}</small></p>
                                         </div>
