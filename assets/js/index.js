@@ -16,29 +16,26 @@ try{
   tarjetas(fichas, 'cuerpo')
   crearChecks(fichas);
 
-  let chequeados = [];
-  let checkboxes = document.querySelectorAll('input[type=checkbox]')
-  
-
-function filtrarCategorias(arrayCategorias, arrayObjetos) {
+  function filtrarCategorias(arrayCategorias, arrayObjetos) {
     return arrayCategorias.length === 0 ? arrayObjetos : arrayObjetos.filter(elemento => arrayCategorias.includes(elemento.category));
 }
+filtrarCategorias(uniqueCats,fichas)
 
-filtrarCategorias(chequeados,fichas)
-  
+let chequeados = []
+let checkboxes = document.querySelectorAll('input[type=checkbox]')
+checkboxes.forEach( checkbox  => checkbox.addEventListener('change',() => { 
+    chequeados = [...checkboxes].filter(checkbox => checkbox.checked).map(elemento => elemento.value)
+
+    console.log(chequeados);
+    filtroCruzado(fichas);
+}))
+
 function filtroCruzado(array){
     let tarjetasFiltradas = filtrarCategorias(chequeados, array);
     let checkFiltrados = busquedaPorInput(inputValue, tarjetasFiltradas);
     tarjetas(checkFiltrados, 'cuerpo');
 }
 filtroCruzado(fichas);
-
-checkboxes.forEach( checkbox  => checkbox.addEventListener('change',() => { 
-    let chequeados = [...checkboxes].filter(checkbox => checkbox.checked).map(elemento => elemento.value)
-    console.log(chequeados);
-}))
-
-
 }
 catch(err){
     console.log(err)

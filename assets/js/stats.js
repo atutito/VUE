@@ -47,9 +47,9 @@ function primeraTabla(array1, array2, array3) {
     let div = document.createElement('tr');
         div.innerHTML = `
         <tr>
-          <td>${array1.name} (${((array1.assistance / array1.capacity)*100).toFixed(1)}%)</td>
-          <td>${array2.name} (${((array2.assistance / array2.capacity)*100).toFixed(1)}%)</td>
-          <td>${array3.name} (${array3.capacity} ppl.) </td>
+          <td style="background-color: #F1DAE2">${array1.name} (${((array1.assistance / array1.capacity)*100).toFixed(1)}%)</td>
+          <td style="background-color: #F1DAE2">${array2.name} (${((array2.assistance / array2.capacity)*100).toFixed(1)}%)</td>
+          <td style="background-color: #F1DAE2">${array3.name} (${array3.capacity} ppl.) </td>
         </tr>`
     fragmento.appendChild(div);
     cuerpo.appendChild(fragmento);
@@ -191,9 +191,9 @@ function categoriasPas(array,array2, array3) {
         const num3 = array3[index];
         let div = document.createElement('tr');
         div.innerHTML += `
-          <td>${num1}</td>
-          <td>${num2} USD</td>
-          <td>${num3.toFixed(2)}%</td>`
+          <td style="background-color: #F1DAE2">${num1}</td>
+          <td style="background-color: #F1DAE2">${num2} USD</td>
+          <td style="background-color: #F1DAE2">${num3.toFixed(2)}%</td>`
         fragmento.appendChild(div);
       });
     cuerpo.appendChild(fragmento);
@@ -300,9 +300,9 @@ function categoriasFut(array,array2,array3) {
         const num3 = array3[index];
         let div = document.createElement('tr');
         div.innerHTML += `
-          <td>${num1}</td>
-          <td>${num2} USD</td>
-          <td>${num3.toFixed(2)}%</td>`
+          <td style="background-color: #F1DAE2">${num1}</td>
+          <td style="background-color: #F1DAE2">${num2} USD</td>
+          <td style="background-color: #F1DAE2">${num3.toFixed(2)}%</td>`
         fragmento.appendChild(div);
       });
     cuerpo.appendChild(fragmento);
