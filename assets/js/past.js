@@ -1,12 +1,31 @@
-// SE MUESTRAN LAS CARDS PASADAS LA FECHA ACTUAL
-const fechaActual = Date.parse(eventsData.currentDate);
+// SE LLAMA A LA API
+const fichas = [];
+const fechaActual = 0;
 
-fichas = [];
-for(let cartas of eventsData.events) {
-    if(Date.parse(cartas.date) < fechaActual){
-    fichas.push(cartas);
-    };
-};
+function traerDatos() {
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+  .then(response => response.json())
+  .then(data => {
+    fechaActual = Date.parse(data.currentDate)
+    for (const key in data.events) {
+        if(Date.parse(key.date) < fechaActual){
+            fichas.push(key)
+        }}})
+  .catch(err => err.json())
+}
+traerDatos();
+
+console.log(fichas);
+
+// // SE MUESTRAN LAS CARDS PASADAS LA FECHA ACTUAL
+// const fechaActual = Date.parse(eventsData.currentDate);
+
+// fichas = [];
+// for(let cartas of eventsData.events) {
+//     if(Date.parse(cartas.date) < fechaActual){
+//     fichas.push(cartas);
+//     };
+// };
 
 console.log(fichas);
 
@@ -51,7 +70,7 @@ function crearChecks(array){
         categorias.push(categoria.category);
     }
     const dupCats = categorias.filter((cat, indice) => {
-        return categorias.indexOf(cat) !== indice;
+        return categorias.indexOf(cat) === indice;
     });
     let fragmento2 = new DocumentFragment();
     for (let elemento of dupCats){
@@ -65,7 +84,7 @@ function crearChecks(array){
     };
     busqueda.appendChild(fragmento2);
 }
-crearChecks(eventsData.events);
+crearChecks(fichas);
 
 
 // SE ESCUCHAN LAS CHECKBOXES, SE GENERA ARRAY DE LABELS

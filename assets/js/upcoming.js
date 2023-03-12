@@ -9,6 +9,8 @@ for(let cartas of eventsData.events) {
     };
 };
 
+console.log(fichas);
+
 // SE LLAMAN LAS CARDS DINÁMICAMENTE
 function tarjetas(array, contenedor) {
     let cuerpo = document.getElementById(contenedor);
@@ -49,7 +51,7 @@ function crearChecks(array){
         categorias.push(categoria.category);
     }
     const dupCats = categorias.filter((cat, indice) => {
-        return categorias.indexOf(cat) !== indice;
+        return categorias.indexOf(cat) === indice;
     });
     let fragmento2 = new DocumentFragment();
     for (let elemento of dupCats){
