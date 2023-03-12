@@ -101,9 +101,17 @@ console.log(dupCats)
 let catFuturas = dupCats;
 
 // // SE SUMAN LAS REVENUES
-let pasFiltradas = fichasPasadas.filter(cat => cat.category.includes(catPasadas[0]));
 
-console.log(pasFiltradas);
+
+let pasFiltradas1 = fichasPasadas.filter(cat => cat.category.includes(catPasadas[0]));
+let pasFiltradas2 = fichasPasadas.filter(cat => cat.category.includes(catPasadas[1]));
+let pasFiltradas3 = fichasPasadas.filter(cat => cat.category.includes(catPasadas[2]));
+let pasFiltradas4 = fichasPasadas.filter(cat => cat.category.includes(catPasadas[3]));
+let pasFiltradas5 = fichasPasadas.filter(cat => cat.category.includes(catPasadas[4]));
+let pasFiltradas6 = fichasPasadas.filter(cat => cat.category.includes(catPasadas[5]));
+
+
+console.log(pasFiltradas1);
 
 acumulador1 = 0
 function revenues1 (array){
@@ -111,7 +119,23 @@ function revenues1 (array){
         acumulador1 += array[i].assistance * array[i].price;
     }
 }
-revenues1(pasFiltradas)
+revenues1(pasFiltradas1)
+console.log(acumulador1);
+let revenuesPrimeraCat = acumulador1;
+revenues1(pasFiltradas2)
+let revenuesSegundaCat = acumulador1;
+console.log(acumulador1);
+revenues1(pasFiltradas3)
+let revenuesTerceraCat = acumulador1;
+console.log(acumulador1);
+revenues1(pasFiltradas4)
+let revenuesCuartaCat = acumulador1;
+console.log(acumulador1);
+revenues1(pasFiltradas5)
+let revenuesQuintaCat = acumulador1;
+console.log(acumulador1);
+revenues1(pasFiltradas6)
+let revenuesSextaCat = acumulador1;
 console.log(acumulador1);
 
 // SE FILTRAN LAS CATEGORIAS PASADAS

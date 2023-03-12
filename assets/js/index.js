@@ -31,6 +31,7 @@ function filtroCruzado(array){
     let checkFiltrados = busquedaPorInput(inputValue, tarjetasFiltradas);
     tarjetas(checkFiltrados, 'cuerpo');
 }
+filtroCruzado(fichas);
 
 checkboxes.forEach( checkbox  => checkbox.addEventListener('change',() => { 
     let chequeados = [...checkboxes].filter(checkbox => checkbox.checked).map(elemento => elemento.value)
@@ -106,9 +107,10 @@ crearChecks(fichas);
 
 
 // SE ESCUCHAN LAS CHECKBOXES, SE GENERA ARRAY DE LABELS
+let chequeados = []
 let checkboxes = document.querySelectorAll('input[type=checkbox]')
 checkboxes.forEach( checkbox  => checkbox.addEventListener('change',() => { 
-    let chequeados = [...checkboxes].filter(checkbox => checkbox.checked).map(elemento => elemento.value.innerHTML)
+    chequeados = [...checkboxes].filter(checkbox => checkbox.checked).map(elemento => elemento.value.innerHTML)
 
     console.log(chequeados);
     filtroCruzado(fichas);
@@ -118,10 +120,12 @@ function filtrarCategorias(arrayCategorias, arrayObjetos) {
     return arrayCategorias.length === 0 ? arrayObjetos : arrayObjetos.filter(elemento => arrayCategorias.includes(elemento.category));
 }
 
+filtrarCategorias(chequeados, fichas);
+
 // FILTRO SEARCH
 let inputValue = ''
 let filtroBusqueda = document.getElementById('filtroBusqueda');
-let arrayFiltrado2 = [];
+let arrayNuevo = [];
 
 const input = filtroBusqueda.addEventListener('keyup', (e) => {
     inputValue = e.target.value.toLowerCase();
@@ -138,7 +142,7 @@ function busquedaPorInput(valor, arrayObjetos) {
 // ❌❌❌ FILTRO CRUZADO ❌❌❌
 
 function filtroCruzado(array){
-    let tarjetasFiltradas = filtrarCategorias(arrayTrimeado, array);
+    let tarjetasFiltradas = filtrarCategorias(chequeados, array);
     let checkFiltrados = busquedaPorInput(inputValue, tarjetasFiltradas);
     tarjetas(checkFiltrados, 'cuerpo');
 }
