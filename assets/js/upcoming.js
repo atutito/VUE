@@ -1,15 +1,59 @@
-// SE MUESTRAN LAS CARDS PRÓXIMAS A LA FECHA ACTUAL
-const fechaActual = Date.parse(eventsData.currentDate);
-
+// SE LLAMA A LA API
+const UrlApi = 'https://mindhub-xj03.onrender.com/api/amazing'
 let fichas = [];
 
-for(let cartas of eventsData.events) {
-    if(Date.parse(cartas.date) > fechaActual){
-    fichas.push(cartas);
-    };
-};
+async function traerDatos() {
+try{
+  const response = await fetch(UrlApi)
+  const data = await response.json()
+  let categorias = [];
 
-console.log(fichas);
+  let fechaActual = Date.parse(data.currentDate);
+
+let fichas = data.events;
+console.log(fichas)
+let fichasFuturas= [];
+  for (let ficha of fichas) {
+        if(Date.parse(ficha.date) > fechaActual){
+            fichasFuturas.push(ficha)
+            categorias.push(ficha.category);
+        }}
+  console.log(fichasFuturas)
+  let uniqueCats = [...new Set(categorias)];
+  console.log(uniqueCats);
+  tarjetas(fichasFuturas, 'cuerpo')
+  crearChecks(fichasFuturas);
+
+  function filtrarCategorias(arrayCategorias, arrayObjetos) {
+    return arrayCategorias.length === 0 ? arrayObjetos : arrayObjetos.filter(elemento => arrayCategorias.includes(elemento.category));
+}
+filtrarCategorias(uniqueCats,fichasFuturas)
+
+let arrayTrimeado = [];
+let checkboxes = document.querySelectorAll('input[type=checkbox]')
+checkboxes.forEach( checkbox  => checkbox.addEventListener('change',() => { 
+    let chequeados = [...checkboxes].filter(checkbox => checkbox.checked).map(elemento => elemento.nextElementSibling.innerHTML)
+     
+    arrayTrimeado = chequeados.map(element => {
+        return element.trim()});
+    console.log(arrayTrimeado);
+    filtroCruzado(fichas);
+}))
+
+function filtroCruzado(array){
+    let tarjetasFiltradas = filtrarCategorias(arrayTrimeado, array);
+    let checkFiltrados = busquedaPorInput(inputValue, tarjetasFiltradas);
+    tarjetas(checkFiltrados, 'cuerpo');
+}
+filtroCruzado(fichasFuturas);
+}
+catch(err){
+    console.log(err)
+}
+}
+
+traerDatos();
+
 
 // SE LLAMAN LAS CARDS DINÁMICAMENTE
 function tarjetas(array, contenedor) {
@@ -65,7 +109,7 @@ function crearChecks(array){
     };
     busqueda.appendChild(fragmento2);
 }
-crearChecks(eventsData.events);
+crearChecks(fichas);
 
 
 // SE ESCUCHAN LAS CHECKBOXES, SE GENERA ARRAY DE LABELS

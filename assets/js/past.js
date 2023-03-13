@@ -1,21 +1,80 @@
 // SE LLAMA A LA API
-const fichas = [];
-const fechaActual = 0;
+const UrlApi = 'https://mindhub-xj03.onrender.com/api/amazing'
+let fichas = [];
 
-function traerDatos() {
-fetch('https://mindhub-xj03.onrender.com/api/amazing')
-  .then(response => response.json())
-  .then(data => {
-    fechaActual = Date.parse(data.currentDate)
-    for (const key in data.events) {
-        if(Date.parse(key.date) < fechaActual){
-            fichas.push(key)
-        }}})
-  .catch(err => err.json())
+async function traerDatos() {
+try{
+  const response = await fetch(UrlApi)
+  const data = await response.json()
+  let categorias = [];
+
+  let fechaActual = Date.parse(data.currentDate);
+
+let fichas = data.events;
+console.log(fichas)
+let fichasPasadas= [];
+  for (let ficha of fichas) {
+        if(Date.parse(ficha.date) < fechaActual){
+            fichasPasadas.push(ficha)
+            categorias.push(ficha.category);
+        }}
+  console.log(fichasPasadas)
+  let uniqueCats = [...new Set(categorias)];
+  console.log(uniqueCats);
+  tarjetas(fichasPasadas, 'cuerpo')
+  crearChecks(fichasPasadas);
+
+  function filtrarCategorias(arrayCategorias, arrayObjetos) {
+    return arrayCategorias.length === 0 ? arrayObjetos : arrayObjetos.filter(elemento => arrayCategorias.includes(elemento.category));
 }
+filtrarCategorias(uniqueCats,fichasPasadas)
+
+let arrayTrimeado = [];
+let checkboxes = document.querySelectorAll('input[type=checkbox]')
+checkboxes.forEach( checkbox  => checkbox.addEventListener('change',() => { 
+    let chequeados = [...checkboxes].filter(checkbox => checkbox.checked).map(elemento => elemento.nextElementSibling.innerHTML)
+     
+    arrayTrimeado = chequeados.map(element => {
+        return element.trim()});
+    console.log(arrayTrimeado);
+    filtroCruzado(fichas);
+}))
+
+function filtroCruzado(array){
+    let tarjetasFiltradas = filtrarCategorias(arrayTrimeado, array);
+    let checkFiltrados = busquedaPorInput(inputValue, tarjetasFiltradas);
+    tarjetas(checkFiltrados, 'cuerpo');
+}
+filtroCruzado(fichasPasadas);
+}
+catch(err){
+    console.log(err)
+}
+}
+
 traerDatos();
 
-console.log(fichas);
+
+
+
+
+// const fichas = [];
+// const fechaActual = 0;
+
+// function traerDatos() {
+// fetch('https://mindhub-xj03.onrender.com/api/amazing')
+//   .then(response => response.json())
+//   .then(data => {
+//     fechaActual = Date.parse(data.currentDate)
+//     for (const key in data.events) {
+//         if(Date.parse(key.date) < fechaActual){
+//             fichas.push(key)
+//         }}})
+//   .catch(err => err.json())
+// }
+// traerDatos();
+
+// console.log(fichas);
 
 // // SE MUESTRAN LAS CARDS PASADAS LA FECHA ACTUAL
 // const fechaActual = Date.parse(eventsData.currentDate);
@@ -27,7 +86,7 @@ console.log(fichas);
 //     };
 // };
 
-console.log(fichas);
+// console.log(fichas);
 
 // SE LLAMAN LAS CARDS DINÁMICAMENTE
 
