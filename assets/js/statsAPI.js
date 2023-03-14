@@ -1,5 +1,13 @@
-const fichas = eventsData.events;
-console.log(fichas);
+// SE CAPTURA LA API
+
+const UrlApi = 'https://mindhub-xj03.onrender.com/api/amazing'
+let fichas = [];
+
+async function traerDatos() {
+try{
+  const response = await fetch(UrlApi)
+  const data = await response.json()
+  fichas = data.events;
 
 // SE CALCULA EL EVENTO CON MAYOR PORCENTAJE DE ASISTENCIA
 let mayor = 0;
@@ -48,9 +56,9 @@ function primeraTabla(array1, array2, array3) {
     let div = document.createElement('tr');
         div.innerHTML = `
         <tr>
-          <td style="background-color: #F1DAE2">${array1.name} (${((array1.assistance / array1.capacity)*100).toFixed(1)}%)</td>
-          <td style="background-color: #F1DAE2">${array2.name} (${((array2.assistance / array2.capacity)*100).toFixed(1)}%)</td>
-          <td style="background-color: #F1DAE2">${array3.name} (${array3.capacity} ppl.) </td>
+          <td style="background-color: #F1DAE2; text-align:center">${array1.name} (${((array1.assistance / array1.capacity)*100).toFixed(1)}%)</td>
+          <td style="background-color: #F1DAE2; text-align:center">${array2.name} (${((array2.assistance / array2.capacity)*100).toFixed(1)}%)</td>
+          <td style="background-color: #F1DAE2; text-align:center">${array3.name} (${array3.capacity} ppl.) </td>
         </tr>`
     fragmento.appendChild(div);
     cuerpo.appendChild(fragmento);
@@ -60,10 +68,10 @@ primeraTabla(mayor, menor, masGrande);
 
 
 // SE MUESTRAN LAS CARDS PASADAS LA FECHA ACTUAL
-const fechaActual = Date.parse(eventsData.currentDate);
+const fechaActual = Date.parse(data.currentDate);
 
 fichasPasadas = [];
-for(let cartas of eventsData.events) {
+for(let cartas of data.events) {
     if(Date.parse(cartas.date) < fechaActual){
     fichasPasadas.push(cartas);
     };
@@ -72,7 +80,7 @@ console.log(fichasPasadas);
 
 // SE MUESTRAN LAS CARDS FUTURAS LA FECHA ACTUAL
 fichasFuturas = [];
-for(let cartas of eventsData.events) {
+for(let cartas of data.events) {
     if(Date.parse(cartas.date) > fechaActual){
     fichasFuturas.push(cartas);
     };
@@ -192,9 +200,9 @@ function categoriasPas(array,array2, array3) {
         const num3 = array3[index];
         let div = document.createElement('tr');
         div.innerHTML += `
-          <td style="background-color: #F1DAE2">${num1}</td>
-          <td style="background-color: #F1DAE2">${num2} USD</td>
-          <td style="background-color: #F1DAE2">${num3.toFixed(2)}%</td>`
+          <td style="background-color: #F1DAE2; text-align:center">${num1}</td>
+          <td style="background-color: #F1DAE2; text-align:center">${num2} USD</td>
+          <td style="background-color: #F1DAE2; text-align:center">${num3.toFixed(2)}%</td>`
         fragmento.appendChild(div);
       });
     cuerpo.appendChild(fragmento);
@@ -301,11 +309,19 @@ function categoriasFut(array,array2,array3) {
         const num3 = array3[index];
         let div = document.createElement('tr');
         div.innerHTML += `
-          <td style="background-color: #F1DAE2">${num1}</td>
-          <td style="background-color: #F1DAE2">${num2} USD</td>
-          <td style="background-color: #F1DAE2">${num3.toFixed(2)}%</td>`
+          <td style="background-color: #F1DAE2; text-align:center">${num1}</td>
+          <td style="background-color: #F1DAE2; text-align:center">${num2} USD</td>
+          <td style="background-color: #F1DAE2; text-align:center">${num3.toFixed(2)}%</td>`
         fragmento.appendChild(div);
       });
     cuerpo.appendChild(fragmento);
 }
 categoriasFut(catFuturas,arrayRevenuesFut,arrayAsistenciaFutura);
+
+}
+catch(err){
+    console.log("Server error, please reload.")
+}
+}
+
+traerDatos();

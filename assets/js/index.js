@@ -38,7 +38,7 @@ function filtroCruzado(array){
 filtroCruzado(fichas);
 }
 catch(err){
-    console.log(err)
+    cuerpo.innerHTML =  '<div class="w-100"><h5> Server error, please reload.</h5></div>' 
 }
 }
 
