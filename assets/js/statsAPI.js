@@ -8,13 +8,15 @@ try{
   const response = await fetch(UrlApi)
   const data = await response.json()
   fichas = data.events;
-
+console.log(fichas)
 // SE CALCULA EL EVENTO CON MAYOR PORCENTAJE DE ASISTENCIA
-let mayor = 0;
+let mayor = ''
+let masAsist = 0
 function mayorAsistencia (array){
-    mayor = 0
     for (carta of array){
-        if((carta.assistance / carta.capacity)*100 > mayor){
+        let cuenta = ((carta.assistance) / (carta.capacity))*100
+        if(cuenta > masAsist){
+            masAsist = cuenta;
             mayor = carta;
         }
     }
@@ -24,10 +26,15 @@ mayorAsistencia(fichas)
 console.log(mayor);
 
 // SE CALCULA EL EVENTO CON MENOR PORCENTAJE DE ASISTENCIA
-menor = ''
+let menor = '';
+let minAsist = 0;
+
 function menorAsistencia (array){
+    let cuenta = ((mayor.assistance) / (mayor.capacity)*100)    
     for (carta of array){
-        if((carta.assistance / carta.capacity)*100 < (mayor.assistance / mayor.capacity)*100){
+        let cuentaBucle = ((carta.assistance)/(carta.capacity)*100);
+        if(cuentaBucle < cuenta){
+            cuenta = ((carta.assistance)/(carta.capacity)*100);
             menor = carta;
         }
     }

@@ -6,7 +6,7 @@ let mayor = 0;
 function mayorAsistencia (array){
     mayor = 0
     for (carta of array){
-        if((carta.assistance / carta.capacity)*100 > mayor){
+        if(carta.assistance&&(Number(carta.assistance) / Number(carta.capacity))*100 > mayor){
             mayor = carta;
         }
     }
@@ -17,7 +17,7 @@ console.log(mayor);
 
 // SE CALCULA EL EVENTO CON MENOR PORCENTAJE DE ASISTENCIA
 menor = ''
-function menorAsistencia (array){
+function menorAsistencia (array){ 
     for (carta of array){
         if((carta.assistance / carta.capacity)*100 < (mayor.assistance / mayor.capacity)*100){
             menor = carta;
