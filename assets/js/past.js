@@ -5,10 +5,11 @@ createApp({
          return{
               arrayEventos: [],
               nombreIngresado: '',
-              filtrarPorSeleccion: [],
+              eventosFiltro: [],
               arrayCategorias: [],
               dupCats: [],
-              fechaActual: ''
+              fechaActual: '',
+              checked: []
          }
     },
     created(){
@@ -17,10 +18,8 @@ createApp({
          .then(response => response.json())
          .then(data => {
               this.fechaActual = Date.parse(data.currentDate)
-              console.log(this.fechaActual)
               this.arrayEventos = data.events.filter(el => Date.parse(el.date) < this.fechaActual)
-              console.log(this.arrayEventos)
-              console.log(this.filtrarPorSeleccion)
+              this.eventosFiltro = this.arrayEventos
               this.crearChecks(this.arrayEventos)
 
          })
@@ -38,10 +37,11 @@ createApp({
           })
           this.dupCats = dupCats
       },
+     filtro (){
+          this.eventosFiltro = this.arrayEventos.filter( evento => {
+           return (this.checked.includes(evento.category) || this.checked.length === 0) && evento.name.toLowerCase().includes(this.nombreIngresado.toLowerCase())
+          })
+      }
     },
-    computed:{
-         filtrarPorInputTexto: function filtro (){
-              this.filtrarPorSeleccion = this.arrayEventos.filter(objeto => objeto.name.includes(this.nombreIngresado));
-         }
-    }
+    computed:{}
 }).mount("#app")
