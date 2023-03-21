@@ -11,7 +11,7 @@
 
     <title>Amazing Events</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100" style="margin-bottom: 8vh;">
   <header class="d-flex justify-content-between w-100 min"> 
     <nav class="navbar d-flex navbar-expand-lg navbar-expand-md p-3 w-100" style="background-color: rgb(221, 218, 218);">
       <div class=" d-flex justify-content-between container-fluid">
@@ -29,10 +29,10 @@
             <a class="nav-link" href="./upcoming_events.html">Upcoming Events</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./past_events.html">Past Events</a>
+            <a class="nav-link" href="#">Past Events</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="./contact.html">Contact</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="./stats.html">Stats</a>
@@ -43,27 +43,49 @@
     
     </nav>        
 </header>
-    <main class="d-flex justify-content-center">
-        <div class="card col-8 d-flex container m-5" style="background-color: #F8D7DA;">
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label mt-1">Name:</label>
-            <input type="form-control" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-          </div>
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address:</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Tell us what you think:</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
-          <button type="button" class="btn btn-danger m-2">Send</button>
+
+<main>
+  
+  <div id="app">
+    <div class="d-flex flex-wrap gap-3 justify-content-center mt-3 mb-3">
+
+      <div class="form-check form-check-inline" v-for="cat of dupCats">
+        <label class="form-check-label" for="inlineCheckbox1">{{cat}}
+          <input class="form-check-input" v-on:change="filtro()" v-model="checked" type="checkbox" :value="cat">
+        </label>
+      </div>
+    
+        <div class="form-inline">
+          <input type="text" class="form-control" placeholder="Search Event Name" v-model="nombreIngresado" v-on:keyup="filtro()">
         </div>
+      </div>
+      <div class="d-flex flex-wrap gap-3 justify-content-center ">
+          <div v-if="eventosFiltro.length > 0"  v-for="evento of eventosFiltro">
+               <div class="card" style="width: 18rem;">
+                    <img :src="evento.image" class="card-img-top" v-bind:alt="evento.name" style="height: 15rem; object-fit: cover">
+                    <div class="card-body">
+                         <h5 class="card-title">{{evento.name}}</h5>
+                         <p class="card-text">{{evento.description}}</p>
+                         <a :href="'./card.html?id='+ evento._id" class="btn btn-danger" style="float:right">info</a>
+                        </div>
+               </div>
+          </div>
+          <div v-else>
+             <h5>No results to show, please refine your search and try again.</h5>
+          </div>
+    
+          </div>
+    
+    
+  </div>
 
 
-    </main>
-   
-    <footer class="d-flex fixed-bottom justify-content-between p-3" style="background-color: rgb(221, 218, 218);">
+
+
+
+</main>
+ 
+  <footer class="d-flex fixed-bottom justify-content-between mt-auto p-3" style="background-color: rgb(221, 218, 218);">
       <div>
           <a href="#" class="fa fa-facebook"></a>
           <a href="#" class="fa fa-twitter"></a>
@@ -74,6 +96,10 @@
 
   </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <!-- <script src="./assets/js/data.js"></script> -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="./assets/js/past.js"></script>
+
 </body>
 </html>

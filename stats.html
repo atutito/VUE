@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="./assets/img/favicon.ico" sizes="32x32">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <title>Amazing Events</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <header class="d-flex justify-content-between w-100 min"> 
+    <nav class="navbar d-flex navbar-expand-lg navbar-expand-md p-3 w-100" style="background-color: rgb(221, 218, 218);">
+      <div class=" d-flex justify-content-between container-fluid">
+        <img class="navbar-brand w-25" src="./assets/img/Logo Amazing Events.png" alt="Logo">
+      <button class="navbar-toggler navbar-toggler-icon color-text justify-self-end" type="button" data-bs-toggle="collapse" data-bs-target="#hamburguesa" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class=""></span>
+      </button>
+      
+      <div class= "collapse navbar-collapse justify-content-end pr-2" id = "hamburguesa">    
+        <ul class="navbar-nav nav d-flex flex-wrap justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./upcoming_events.html">Upcoming Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./past_events.html">Past Events</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="./contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Stats</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    </nav>        
+</header>
+    <main id="app">
+        <div class="d-flex flex-column justify-content-center m-5">
+          <h4>Events Statistics</h4>
+            <table class="table table-danger table-striped" id="primera-tabla">
+                <tbody>
+                  <tr>
+                    <th style="text-align:center">Events with the higher percentage of attendance</th>
+                    <th style="text-align:center">Events with the lower percentage of attendance</th>
+                    <th style="text-align:center">Events with the larger capacity</th>
+                  </tr>
+                  <tr>
+                    <td style="background-color: #F1DAE2; text-align:center">{{masAsistencia.name}} ({{((masAsistencia.assistance / masAsistencia.capacity)*100).toFixed(1)}}%)</th>
+                    <td style="background-color: #F1DAE2; text-align:center">{{menosAsistencia.name}} ({{((menosAsistencia.assistance / menosAsistencia.capacity)*100).toFixed(1)}}%)</th>
+                    <td style="background-color: #F1DAE2; text-align:center">{{masCapacidad.name}} ({{masCapacidad.capacity}} ppl.)</th>
+                  </tr>
+                </tbody>
+              </table>
+          <h4>Upcoming Events Statistics by Category</h4>
+              <table class="table table-danger table-striped">
+                <tbody>
+                    <tr>
+                      <th style="text-align:center">Categories</th>
+                      <th style="text-align:center">Revenues</th>
+                      <th style="text-align:center">Percentage of attendance</th>
+                    </tr>
+                    <tr v-for="categoria of catFuturas">
+                      <td style="background-color: #F1DAE2; text-align:center">{{categoria}}</td>
+                    </tr>
+                </tbody>
+              </table>
+                      <h4 class="d-flex">Past Events by Category</h4>
+              <table class="table table-danger table-striped mb-5">
+                <tbody>
+                    <tr>
+                        <th style="text-align:center">Categories</th>
+                        <th style="text-align:center">Revenues</th>
+                        <th style="text-align:center">Percentage of attendance</th>
+                    </tr>
+                    <tr v-for="catPasada of catPasadas">
+                      <td style="background-color: #F1DAE2; text-align:center">{{catPasada}}</td>
+                    </tr>
+                </tbody>
+              </table>
+        </div>        
+    </main>
+   
+    <footer class="d-flex fixed-bottom justify-content-between mt-auto p-3" style="background-color: rgb(221, 218, 218);">
+        <div>
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-whatsapp"></a>
+        </div>
+        <div style="font-size: x-large; font-family: 'Bebas Neue'">FE08-TN</div>
+
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./assets/js/stats.js"></script>
+</body>
+</html>

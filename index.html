@@ -5,151 +5,115 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    
+    <link rel="icon" type="image/png" href="./assets/img/favicon.ico" sizes="32x32">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/styles/style.css">
 
     <title>Amazing Events</title>
 </head>
-<body>
-    <header>
-        <nav class="navbar d-flex navbar-expand-lg justify-content-between" style="background-color: rgb(221, 218, 218);">
-            <img class="navbar-brand w-25" src="./assets/img/Logo Amazing Events.png" alt="Logo">
-            <div class="nav justify-content-end">    
+<body class="d-flex flex-column min-vh-100" style="margin-bottom: 8vh;">
+  <header class="d-flex justify-content-between w-100 min"> 
+          <nav class="navbar d-flex navbar-expand-lg navbar-expand-md p-3 w-100" style="background-color: rgb(221, 218, 218);">
+            <div class=" d-flex justify-content-between container-fluid">
+              <img class="navbar-brand w-25" src="./assets/img/Logo Amazing Events.png" alt="Logo">
+            <button class="navbar-toggler navbar-toggler-icon color-text justify-self-end" type="button" data-bs-toggle="collapse" data-bs-target="#hamburguesa" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""></span>
+            </button>
+            <div class= "collapse navbar-collapse justify-content-end pr-2" id = "hamburguesa">    
+              <ul class="navbar-nav nav d-flex flex-wrap justify-content-end">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Active</a>
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
+                  <a class="nav-link" href="./upcoming_events.html">Upcoming Events</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
+                  <a class="nav-link" href="./past_events.html">Past Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                  </li>
+                    <a class="nav-link" href="./contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./stats.html">Stats</a>
+                </li>
+              </ul>
             </div>
-        </nav>
-        <title>
-            <div id="carouselExample" class="carousel slide">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="..." class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-        </title>
-    </header>
-    <main>
-        <div class="form-check form-check-inline m-3">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-            <label class="form-check-label" for="inlineCheckbox1">1</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">2</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">3</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">4</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">5</label>
           </div>
           
-        <div class="container form-check-inline">
-
-            <div class="row justify-content-center">
-
-
-                <div class="form col-md-6">
-                  <input type="text" class="form-control form-input" placeholder="Search anything...">
-                  <i class="fa fa-search"></i></span>
-                </div>
-                
-              
-            </div>
-            
+          </nav>        
+  </header>
+    <main>
+      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner mt-3">
+          <div class="carousel-item active">
+            <img src="./assets/img/1.jpg" class="d-block w-100" alt="Spa">
           </div>
-          <div class="tarjetas m-3">
-          <div class="row row-cols-1 row-cols-md-4 g-4">
-            <div class="col">
-              <div class="card">
-                <img src="./assets/img/Cinema.jpg" class="card-img-top" alt="Cinema Event">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <button type="button" class="btn btn-outline-info">Info</button>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="./assets/img/Costume_Party.jpg" class="card-img-top" alt="Costume Party Event">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <button type="button" class="btn btn-outline-info">Info</button>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="./assets/img/Food_Fair.jpg" class="card-img-top" alt="Food Fair Event">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                  <button type="button" class="btn btn-outline-info">Info</button>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="./assets/img/Marathon.jpg" class="card-img-top" alt="Marathon Event">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <button type="button" class="btn btn-outline-info">Info</button>
-                </div>
-              </div>
-            </div>
+          <div class="carousel-item">
+            <img src="./assets/img/2.jpg" class="d-block w-100" alt="Amusement Park">
+          </div>
+          <div class="carousel-item">
+            <img src="./assets/img/3.jpg" class="d-block w-100" alt="Sushi Night">
+          </div>
+          <div class="carousel-item">
+            <img src="./assets/img/4.jpg" class="d-block w-100" alt="Hiking">
+          </div>
+          <div class="carousel-item">
+            <img src="./assets/img/5.jpg" class="d-block w-100" alt="Diving">
           </div>
         </div>
-    </main>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+<div id="app">
+
+  <div class="d-flex flex-wrap gap-3 justify-content-center mt-3 mb-3">
+
+  <div class="form-check form-check-inline" v-for="cat of dupCats">
+    <label class="form-check-label" for="inlineCheckbox1">{{cat}}
+      <input class="form-check-input" v-on:change="filtro()" v-model="checked" type="checkbox" :value="cat">
+    </label>
+  </div>
+
+    <div class="form-inline">
+      <input type="text" class="form-control" placeholder="Search Event Name" v-model="nombreIngresado" v-on:keyup="filtro()">
+    </div>
+  </div>
+  <div class="d-flex flex-wrap gap-3 justify-content-center ">
+      <div v-if="eventosFiltro.length > 0"  v-for="evento of eventosFiltro">
+           <div class="card" style="width: 18rem;">
+                <img :src="evento.image" class="card-img-top" v-bind:alt="evento.name" style="height: 15rem; object-fit: cover">
+                <div class="card-body">
+                     <h5 class="card-title">{{evento.name}}</h5>
+                     <p class="card-text">{{evento.description}}</p>
+                     <a :href="'./card.html?id='+ evento._id" class="btn btn-danger" style="float:right">info</a>
+                </div>
+           </div>
+      </div>
+      <div v-else>
+         <h5>No results to show, please refine your search and try again.</h5>
+      </div>
+
+      </div>
+ </div>
+</main>
    
-    <footer class="d-flex fixed-bottom justify-content-between p-3" style="background-color: rgb(221, 218, 218);">
+    <footer class="d-flex fixed-bottom justify-content-between mt-auto p-3" style="background-color: rgb(221, 218, 218);">
         <div>
             <a href="#" class="fa fa-facebook"></a>
             <a href="#" class="fa fa-twitter"></a>
             <a href="#" class="fa fa-whatsapp"></a>
         </div>
-        <div style="font-size: x-large;">FE08-TN</div>
-
-
+        <div style="font-size: x-large; font-family: 'Bebas Neue', cursive; ;">FE08-TN</div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./assets/js/index.js"></script>
+    <script src="./assets/js/details.js"></script>
 </body>
 </html>
