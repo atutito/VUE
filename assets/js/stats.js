@@ -30,7 +30,7 @@ createApp({
                 this.fichasFuturas(this.arrayEventos);
                 this.catFuturas = this.crearCats(this.futuras);
                 this.catPasadas = this.crearCats(this.pasadas);
-                this.filtrarCategorias(this.catPasadas, this.arrayEventos);
+                this.filtrarCategorias(this.catPasadas, this.arrayEventos); //TABLA PAST EVENTS 
                 console.log(this.categorias);
                 this.revenuesCategorias()
                 console.log(this.revenues);
