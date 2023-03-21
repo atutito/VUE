@@ -60,61 +60,28 @@
                 </tbody>
               </table>
           <h4>Upcoming Events Statistics by Category</h4>
-              <table class="table table-danger table-striped" id="tabla-futcat">
+              <table class="table table-danger table-striped">
                 <tbody>
                     <tr>
                       <th style="text-align:center">Categories</th>
                       <th style="text-align:center">Revenues</th>
                       <th style="text-align:center">Percentage of attendance</th>
                     </tr>
-                    <tr>
-                      <td style="background-color: #F1DAE2; text-align:center">{{catFuturas[0]}}</td>
-                    </tr>
-                    <tr>
-                      <td style="background-color: #F1DAE2; text-align:center">{{catFuturas[1]}}</td>
-                    </tr>
-                    <tr>
-                      <td style="background-color: #F1DAE2; text-align:center">{{catFuturas[2]}}</td>
-                    </tr>
-                    <tr>
-                      <td style="background-color: #F1DAE2; text-align:center">{{catFuturas[3]}}</td>
-                    </tr>
-                    <tr>
-                      <td style="background-color: #F1DAE2; text-align:center">{{catFuturas[4]}}</td>
-                    </tr>
-                    <tr>
-                      <td style="background-color: #F1DAE2; text-align:center">{{catFuturas[5]}}</td>
+                    <tr v-for="categoria of catFuturas">
+                      <td style="background-color: #F1DAE2; text-align:center">{{categoria}}</td>
                     </tr>
                 </tbody>
               </table>
                       <h4 class="d-flex">Past Events by Category</h4>
-              <table class="table table-danger table-striped mb-5" id="tabla-pastcat">
+              <table class="table table-danger table-striped mb-5">
                 <tbody>
                     <tr>
                         <th style="text-align:center">Categories</th>
                         <th style="text-align:center">Revenues</th>
                         <th style="text-align:center">Percentage of attendance</th>
                     </tr>
-                    <tr>
-                      <td style="background-color: #F1DAE2; text-align:center">{{catPasadas[0]}}</td>
-                    </tr>
-                    <tr>
-                      <td style="background-color: #F1DAE2; text-align:center">{{catPasadas[1]}}</td>
-                    </tr>
-                    <tr>
-                      <td style="background-color: #F1DAE2; text-align:center">{{catPasadas[2]}}</td>
-                    </tr>
-                    <tr>
-                      <td style="background-color: #F1DAE2; text-align:center">{{catPasadas[3]}}</td>
-                    </tr>
-                    <tr>
-                      <td style="background-color: #F1DAE2; text-align:center">{{catPasadas[4]}}</td>
-                    </tr>
-                    <tr>
-                      <td style="background-color: #F1DAE2; text-align:center">{{catPasadas[5]}}</td>
-                    </tr>
-                    <tr>
-                      <td style="background-color: #F1DAE2; text-align:center">{{catPasadas[6]}}</td>
+                    <tr v-for="catPasada of catPasadas">
+                      <td style="background-color: #F1DAE2; text-align:center">{{catPasada}}</td>
                     </tr>
                 </tbody>
               </table>

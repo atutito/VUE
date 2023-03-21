@@ -104,7 +104,6 @@ createApp({
                     'revenue': this.categorias[i][e].price * this.categorias[i][e].assistance
                     })}
                 }
-            // this.revenues
         },
         attendanceCategorias(){
             for(let i in this.categorias){
