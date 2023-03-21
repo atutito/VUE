@@ -12,6 +12,9 @@ createApp({
               futuras: [],
               catFuturas: [],
               catPasadas: [],
+              categorias: [],
+              revenues: [],
+              attendance: [],
          }
     },
     created(){
@@ -27,6 +30,12 @@ createApp({
                 this.fichasFuturas(this.arrayEventos);
                 this.catFuturas = this.crearCats(this.futuras);
                 this.catPasadas = this.crearCats(this.pasadas);
+                this.filtrarCategorias(this.catPasadas, this.arrayEventos);
+                console.log(this.categorias);
+                this.revenuesCategorias()
+                console.log(this.revenues);
+                this.attendanceCategorias();
+                console.log(this.attendance);
 
         })
          .catch(error => console.log(error))
@@ -79,10 +88,36 @@ createApp({
             return dupCats = categorias.filter((cat, indice) => {
                 return categorias.indexOf(cat) === indice;
             });
-        }
+        },
+        filtrarCategorias(array, array2) {
+            for (let i in array){
+                this.categorias[i] = array2.filter(cat => cat.category.includes(array[i]));
+            }
+            return this.categorias
+        },
+        revenuesCategorias(){
+            for(let i in this.categorias){
+                for(let e in this.categorias[i]){
+                this.revenues.push(
+                    {
+                    'categoria': this.categorias[i][e].category,
+                    'revenue': this.categorias[i][e].price * this.categorias[i][e].assistance
+                    })}
+                }
+            // this.revenues
+        },
+        attendanceCategorias(){
+            for(let i in this.categorias){
+                for(let e in this.categorias[i]){
+                this.attendance.push(
+                    {
+                    'categoria': this.categorias[i][e].category,
+                    'attendance': ((this.categorias[i][e].assistance/ this.categorias[i][e].capacity)*100).toFixed(2)
+                    })}
+                }
+        },
     },
     computed:{},
-    
 }).mount("#app")
 
 
@@ -92,6 +127,7 @@ createApp({
 // // SE TOMAN LAS CATEGORIAS
 
 // // // SE SUMAN LAS REVENUES PASADAS
+
 
 // let pasFiltradas1 = fichasPasadas.filter(cat => cat.category.includes(catPasadas[0]));
 // let pasFiltradas2 = fichasPasadas.filter(cat => cat.category.includes(catPasadas[1]));
