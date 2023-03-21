@@ -7,18 +7,28 @@ createApp({
               masAsistencia: [],
               menosAsistencia: [],
               masCapacidad: [],
+              fechaActual: 0,
+              pasadas: [],
+              futuras: [],
+              catFuturas: [],
+              catPasadas: [],
          }
     },
     created(){
+        fetch("https://mindhub-xj03.onrender.com/api/amazing")
+        .then(response => response.json())
+        .then(data => {
+                this.arrayEventos = data.events;
+                this.fechaActual = Date.parse(data.currentDate);
+                this.masAsistencia = this.mayorAsistencia(this.arrayEventos);
+                this.menosAsistencia = this.menorAsistencia(this.arrayEventos);
+                this.masCapacidad = this.mayorCapacidad(this.arrayEventos);
+                this.fichasPasadas(this.arrayEventos);
+                this.fichasFuturas(this.arrayEventos);
+                this.catFuturas = this.crearCats(this.futuras);
+                this.catPasadas = this.crearCats(this.pasadas);
 
-         fetch("https://mindhub-xj03.onrender.com/api/amazing")
-         .then(response => response.json())
-         .then(data => {
-                this.arrayEventos = data.events
-                this.masAsistencia = this.mayorAsistencia(this.arrayEventos)
-                this.menosAsistencia = this.menorAsistencia(this.arrayEventos)
-                this.masCapacidad = this.mayorCapacidad(this.arrayEventos)
-         })
+        })
          .catch(error => console.log(error))
     },
     methods:{
@@ -47,73 +57,39 @@ createApp({
         },
         mayorCapacidad (array){
             return array.reduce((prev, current) => (prev.capacity > current.capacity) ? prev : current)
+        },
+        fichasPasadas (array){
+            for(let cartas of array) {
+                if(Date.parse(cartas.date) < this.fechaActual){
+                this.pasadas.push(cartas);
+                };
+            };
+        },
+        fichasFuturas(array) {
+            for(let cartas of array) {
+                if(Date.parse(cartas.date) > this.fechaActual){
+                this.futuras.push(cartas);
+            }}
+        },
+        crearCats(array){
+            let categorias =[];
+            for (categoria of array){
+                categorias.push(categoria.category);
+            }
+            return dupCats = categorias.filter((cat, indice) => {
+                return categorias.indexOf(cat) === indice;
+            });
         }
-
     },
     computed:{},
     
 }).mount("#app")
 
 
-// // // SE COMPLETA LA PRIMERA TABLA
-// // function primeraTabla(array1, array2, array3) {
-// //     let fragmento = document.createDocumentFragment();
-// //     let cuerpo = document.getElementById('primera-tabla')
-// //     let div = document.createElement('tr');
-// //         div.innerHTML = `
-// //         <tr>
-// //           <td style="background-color: #F1DAE2; text-align:center">${array1.name} (${((array1.assistance / array1.capacity)*100).toFixed(1)}%)</td>
-// //           <td style="background-color: #F1DAE2; text-align:center">${array2.name} (${((array2.assistance / array2.capacity)*100).toFixed(1)}%)</td>
-// //           <td style="background-color: #F1DAE2; text-align:center">${array3.name} (${array3.capacity} ppl.) </td>
-// //         </tr>`
-// //     fragmento.appendChild(div);
-// //     cuerpo.appendChild(fragmento);
-// // }
 
-// // primeraTabla(mayor, menor, masGrande);
-
-
-// // SE MUESTRAN LAS CARDS PASADAS LA FECHA ACTUAL
-// const fechaActual = Date.parse(data.currentDate);
-
-// fichasPasadas = [];
-// for(let cartas of data.events) {
-//     if(Date.parse(cartas.date) < fechaActual){
-//     fichasPasadas.push(cartas);
-//     };
-// };
-// console.log(fichasPasadas);
-
-// // SE MUESTRAN LAS CARDS FUTURAS LA FECHA ACTUAL
-// fichasFuturas = [];
-// for(let cartas of data.events) {
-//     if(Date.parse(cartas.date) > fechaActual){
-//     fichasFuturas.push(cartas);
-//     };
-// };
-// console.log(fichasFuturas);
 
 
 // // SE TOMAN LAS CATEGORIAS
-// let busqueda = '';
-// function crearCats(array){
-//     let categorias =[];
-//     for (categoria of array){
-//         categorias.push(categoria.category);
-//     }
-//     return dupCats = categorias.filter((cat, indice) => {
-//         return categorias.indexOf(cat) === indice;
-//     });
-//     }
-
-
-// crearCats(fichasPasadas)
-// console.log(dupCats)
-// let catPasadas = dupCats;
-
-// crearCats(fichasFuturas)
-// console.log(dupCats)
-// let catFuturas = dupCats;
 
 // // // SE SUMAN LAS REVENUES PASADAS
 
