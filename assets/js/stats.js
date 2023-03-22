@@ -13,8 +13,13 @@ createApp({
               catFuturas: [],
               catPasadas: [],
               categorias: [],
+              eventosPasados: [],
+              revenuesPasadas: [],
               revenues: [],
-              attendance: [],
+              revenuesFuturas: [],
+              eventosFuturos: [],
+              attendanceFuturas: [],
+              attendancePasadas: [],
          }
     },
     created(){
@@ -30,10 +35,17 @@ createApp({
                 this.fichasFuturas(this.arrayEventos);
                 this.catFuturas = this.crearCats(this.futuras);
                 this.catPasadas = this.crearCats(this.pasadas);
-                this.filtrarCategorias(this.catPasadas, this.arrayEventos); //TABLA PAST EVENTS 
-                this.revenuesCategorias()
-                this.attendanceCategorias();
-                this.sumarRevenues(this.revenues);
+                this.filtrarCategorias(this.catPasadas, this.pasadas);          //TABLA PAST EVENTS
+                this.eventosPasados = this.categorias
+                this.revenuesCategorias(this.eventosPasados)                    //TABLA PAST
+                this.revenuesPasadas = this.revenues
+                this.filtrarCategorias(this.catFuturas, this.futuras);          //TABLA UPCOMING EVENTS
+                this.eventosFuturos = this.categorias
+                this.revenuesCategoriasFuturas(this.eventosFuturos)
+                this.attendanceCategoriasFuturas(this.eventosFuturos)
+                this.filtrarCategorias(this.catPasadas, this.pasadas);          //TABLA PAST EVENTS
+                this.eventosPasados = this.categorias
+                this.attendanceCategoriasPasadas(this.eventosPasados)
         })
          .catch(error => console.log(error))
     },
@@ -90,28 +102,48 @@ createApp({
             for (let i in array){
                 this.categorias[i] = array2.filter(cat => cat.category.includes(array[i]));
             }
-            return this.categorias
+            return this.categorias;
         },
-        revenuesCategorias(){
-            for(let i in this.categorias){
-                for(let e in this.categorias[i]){
-                this.revenues.push(
-                    {
-                    'categoria': this.categorias[i][e].category,
-                    'revenue': this.categorias[i][e].price * this.categorias[i][e].assistance
-                    })}
-                }
+        revenuesCategorias(arrayEv){
+            for(let e in arrayEv){
+                let suma = 0
+            for (let i in arrayEv[e]){
+                suma = suma + arrayEv[e][i].assistance * arrayEv[e][i].price;
+            }
+            this.revenues.push(suma)
+        }
+        return this.revenues;
         },
-        attendanceCategorias(){
-            for(let i in this.categorias){
-                for(let e in this.categorias[i]){
-                this.attendance.push(
-                    {
-                    'categoria': this.categorias[i][e].category,
-                    'attendance': ((this.categorias[i][e].assistance/ this.categorias[i][e].capacity)*100).toFixed(2)
-                    })}
-                }
-        }, 
+        revenuesCategoriasFuturas(arrayEv){
+            for(let e in arrayEv){
+                let suma = 0
+            for (let i in arrayEv[e]){
+                suma = suma + arrayEv[e][i].estimate * arrayEv[e][i].price;
+            }
+            this.revenuesFuturas.push(suma)
+        }
+        return this.revenuesFuturas;
+        },
+        attendanceCategoriasFuturas(arrayEv){
+            for(let e in arrayEv){
+                let suma = 0
+            for (let i in arrayEv[e]){
+                suma = suma + (arrayEv[e][i].estimate/ arrayEv[e][i].capacity)*100;
+            }
+            this.attendanceFuturas.push(suma/arrayEv[e].length)
+        }
+        return this.attendanceFuturas;
+        },
+        attendanceCategoriasPasadas(arrayEv){
+            for(let e in arrayEv){
+                let suma = 0
+            for (let i in arrayEv[e]){
+                suma = suma + (arrayEv[e][i].assistance/ arrayEv[e][i].capacity)*100;
+            }
+            this.attendancePasadas.push(suma/arrayEv[e].length)
+        }
+        return this.attendancePasadas;
+        },
 },
     computed:{},
 }).mount("#app")
