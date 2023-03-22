@@ -18,7 +18,8 @@ createApp({
               revenues: [],
               revenuesFuturas: [],
               eventosFuturos: [],
-              asistenciaPasada: []
+              attendanceFuturas: [],
+              attendancePasadas: [],
          }
     },
     created(){
@@ -41,6 +42,10 @@ createApp({
                 this.filtrarCategorias(this.catFuturas, this.futuras);          //TABLA UPCOMING EVENTS
                 this.eventosFuturos = this.categorias
                 this.revenuesCategoriasFuturas(this.eventosFuturos)
+                this.attendanceCategoriasFuturas(this.eventosFuturos)
+                this.filtrarCategorias(this.catPasadas, this.pasadas);          //TABLA PAST EVENTS
+                this.eventosPasados = this.categorias
+                this.attendanceCategoriasPasadas(this.eventosPasados)
         })
          .catch(error => console.log(error))
     },
@@ -118,6 +123,26 @@ createApp({
             this.revenuesFuturas.push(suma)
         }
         return this.revenuesFuturas;
+        },
+        attendanceCategoriasFuturas(arrayEv){
+            for(let e in arrayEv){
+                let suma = 0
+            for (let i in arrayEv[e]){
+                suma = suma + (arrayEv[e][i].estimate/ arrayEv[e][i].capacity)*100;
+            }
+            this.attendanceFuturas.push(suma/arrayEv[e].length)
+        }
+        return this.attendanceFuturas;
+        },
+        attendanceCategoriasPasadas(arrayEv){
+            for(let e in arrayEv){
+                let suma = 0
+            for (let i in arrayEv[e]){
+                suma = suma + (arrayEv[e][i].assistance/ arrayEv[e][i].capacity)*100;
+            }
+            this.attendancePasadas.push(suma/arrayEv[e].length)
+        }
+        return this.attendancePasadas;
         },
 },
     computed:{},
