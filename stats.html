@@ -67,8 +67,9 @@
                       <th style="text-align:center">Revenues</th>
                       <th style="text-align:center">Percentage of attendance</th>
                     </tr>
-                    <tr v-for="categoria of catFuturas">
+                    <tr v-for="(categoria, index) of catFuturas">
                       <td style="background-color: #F1DAE2; text-align:center">{{categoria}}</td>
+                      <td style="background-color: #F1DAE2; text-align:center">${{revenuesFuturas[index]}}</td>
                     </tr>
                 </tbody>
               </table>
@@ -80,8 +81,9 @@
                         <th style="text-align:center">Revenues</th>
                         <th style="text-align:center">Percentage of attendance</th>
                     </tr>
-                    <tr v-for="catPasada of catPasadas">
+                    <tr v-for="(catPasada, index) of catPasadas">
                       <td style="background-color: #F1DAE2; text-align:center">{{catPasada}}</td>
+                      <td style="background-color: #F1DAE2; text-align:center">${{revenuesPasadas[index]}}</td>
                     </tr>
                 </tbody>
               </table>
